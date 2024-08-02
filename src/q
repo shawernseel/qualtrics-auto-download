@@ -4,8 +4,17 @@
 import os
 
 from dotenv import load_dotenv, dotenv_values
-
 load_dotenv()
 
-username: str = os.getenv("MY_SECRET_KEY")
-print(username)
+dir_save_survey = os.getenv("dir_save_survey")
+survey_id = os.getenv("survey_id")
+
+#User Parameters
+api_token: str = os.getenv("api_token")
+file_format = "csv"
+data_center = os.getenv("data_center")
+
+#Static Parameters
+
+
+
