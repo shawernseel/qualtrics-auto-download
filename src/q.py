@@ -21,9 +21,9 @@ file_format = "csv"
 data_center = os.getenv("data_center")
 
 #Static Parameters
-request_check_progress = 0
+request_check_progress = 0.0
 progress_status = "in progress"
-base_url = "https://{0}.qualtrics.com/API/v3/responseexports/".format(data_center)
+base_url = "https://{0}.qualtrics.com/API/v3/surveys/{1}/export-responses/".format(data_center, survey_id)
 headers = {
     "content-type": "application/json",
     "x-api-token": api_token,
