@@ -6,6 +6,7 @@ import requests
 import zipfile
 import io
 import os
+import datetime
 
 from dotenv import load_dotenv, dotenv_values
 load_dotenv()
@@ -14,6 +15,7 @@ dir_save_survey = os.getenv("dir_save_survey")
 survey_id = os.getenv("survey_id")
 
 path_to_local_folder = os.getenv("path_to_local_folder")
+print(f'Path: {path_to_local_folder}')
 
 #User Parameters
 api_token: str = os.getenv("api_token")
@@ -58,6 +60,8 @@ requestDownload = requests.request("GET", requestDownloadUrl, headers=headers, s
 
 
 # Step 4: Unzipping the file
+unique_folder_name = os.path.join(path_to_local_folder, datetime.datetime.now().strftime('%Y%m%d_%H%M%S'))
 os.makedirs(path_to_local_folder, exist_ok=True)
-zipfile.ZipFile(io.BytesIO(requestDownload.content)).extractall("data")
-print('Complete')
+with zipfile.ZipFile(io.BytesIO(requestDownload.content)) as zip_ref:
+    zip_ref.extractall(unique_folder_name)
+print(f'Complete. Files extracted to {unique_folder_name}')
