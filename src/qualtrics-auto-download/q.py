@@ -15,7 +15,6 @@ dir_save_survey = os.getenv("dir_save_survey")
 survey_id = os.getenv("survey_id")
 
 path_to_local_folder = os.getenv("path_to_local_folder")
-print(f'Path: {path_to_local_folder}')
 
 #User Parameters
 api_token: str = os.getenv("api_token")
